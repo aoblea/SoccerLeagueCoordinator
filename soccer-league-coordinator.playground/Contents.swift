@@ -41,6 +41,7 @@ func sortByExperience(player: [[String: String]]) -> (experienced: [[String: Str
   return (experiencedPlayers, inexperiencedPlayers)
 }
 
+// Sort through each group and assign to 3 teams while keeping equal amount of experienced/inexperienced players.
 let groups = sortByExperience(player: theLeague)
 
 print(groups.experienced)
@@ -48,8 +49,34 @@ print(groups.inexperienced)
 print(groups.experienced.count)
 print(groups.inexperienced.count)
 
-//
-//let teamSharks: [[String: String]] = []
-//let teamDragons: [[String: String]] = []
-//let teamRaptors: [[String: String]] = []
+let experiencedPlayers = groups.experienced
+let inexperiencedPlayers = groups.inexperienced
+
+var teamSharks: [[String: String]] = []
+var teamDragons: [[String: String]] = []
+var teamRaptors: [[String: String]] = []
+
+var teams = [teamSharks, teamDragons, teamRaptors]
+
+func assignToTeams(players: [[String: String]]) {
+  for n in 0 ..< players.count {
+    if n % 3 == 0 {
+      teamSharks.append(players[n])
+    }
+    if n % 3 == 1 {
+      teamDragons.append(players[n])
+    }
+    if n % 3 == 2 {
+      teamRaptors.append(players[n])
+    }
+  }
+}
+
+assignToTeams(players: experiencedPlayers)
+assignToTeams(players: inexperiencedPlayers)
+
+
+
+
+
 
