@@ -24,8 +24,6 @@ let player18: [String: String] = ["name": "Herschel Krustofski", "height": "45",
 var theLeague: [[String: String]] = [player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11, player12, player13, player14, player15, player16, player17, player18]
 
 // Iterate through theLeague and then sort/add to experience and inexperienced player collection.
-
-
 func sortByExperience(player: [[String: String]]) -> (experienced: [[String: String]], inexperienced: [[String: String]]) {
   var experiencedPlayers: [[String: String]] = []
   var inexperiencedPlayers: [[String: String]] = []
@@ -75,8 +73,40 @@ func assignToTeams(players: [[String: String]]) {
 assignToTeams(players: experiencedPlayers)
 assignToTeams(players: inexperiencedPlayers)
 
+// send a personalized letter to each of the player's guardian specifying: player's name, guardian names, team name, and date/time of their first team practice.
+func letterToSharksGuardians(sharksPlayers: [[String: String]], teamName: String) {
+  for player in teamSharks {
+    guard let playerName = player["name"] else { return }
+    guard let guardianNames = player["guardians"] else { return }
+    let teamName = "teamSharks"
+    let practiceDateAndTime = "March 17, 3pm"
+    
+    print("Dear \(guardianNames), \(playerName) has been chosen to play for \(teamName). First team practice will be on \(practiceDateAndTime)!")
+  }
+}
 
+func letterToDragonsGuardians(dragonsPlayers: [[String: String]], teamName: String) {
+  for player in teamDragons {
+    guard let playerName = player["name"] else { return }
+    guard let guardianNames = player["guardians"] else { return }
+    let teamName = "teamDragons"
+    let practiceDateAndTime = "March 17, 1pm"
+    
+    print("Dear \(guardianNames), \(playerName) has been chosen to play for \(teamName). First team practice will be on \(practiceDateAndTime)!")
+  }
+}
 
+func letterToRaptorsGuardians(raptorsPlayers: [[String: String]], teamName: String) {
+  for player in teamRaptors {
+    guard let playerName = player["name"] else { return }
+    guard let guardianNames = player["guardians"] else { return }
+    let teamName = "teamRaptors"
+    let practiceDateAndTime = "March 18, 1pm"
+    
+    print("Dear \(guardianNames), \(playerName) has been chosen to play for \(teamName). First team practice will be on \(practiceDateAndTime)!")
+  }
+}
 
-
-
+letterToSharksGuardians(sharksPlayers: teamSharks, teamName: "teamSharks")
+letterToDragonsGuardians(dragonsPlayers: teamDragons, teamName: "teamDragons")
+letterToRaptorsGuardians(raptorsPlayers: teamRaptors, teamName: "teamRaptors")
